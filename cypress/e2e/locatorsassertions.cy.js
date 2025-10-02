@@ -1,4 +1,3 @@
-
 describe('Sauce Demo Assertions and Locators', () => {
   beforeEach(() => {
     cy.visit('https://www.saucedemo.com/');
@@ -28,7 +27,24 @@ describe('Sauce Demo Assertions and Locators', () => {
     cy.get('[data-test="login-button"]').click(); // click login
 
     // assert that an error message is displayed
-    cy.get('[data-test="error"]').should('be.visible')
-      .should('have.text', 'Epic sadface: Username and password do not match any user in this service')
+    cy.get('[data-test="error"]')
+      .should('be.visible')
+      .and('have.text', 'Epic sadface: Username and password do not match any user in this service');
+  });
+
+  it('should log in successfully with valid credentials and show inventory', () => {
+    cy.get('[data-test="username"]')
+      .should('be.visible')
+      .type('standard_user'); // valid username
+
+    cy.get('[data-test="password"]')
+      .should('be.visible')
+      .type('secret_sauce'); // valid password
+
+    cy.get('[data-test="login-button"]').click(); // click login
+
+    // assert that we are redirected to the inventory page
+    cy.url().should('include', '/inventory.html');
+
   });
 });
