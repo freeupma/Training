@@ -32,24 +32,3 @@ describe('Sauce Demo Assertions and Locators', () => {
       .should('have.text', 'Epic sadface: Username and password do not match any user in this service')
   });
 });
-
-
-//    it('should load the login page', () => {
-//     //sauce demo login with valid credentials
-//     cy.get('[data-test="username"]')
-//       .should('be.visible')
-//       .type('standard_user'); //Enter username
-
-
-//     cy.get('[data-test="password"]')
-//       .should('be.visible')
-//       .type('secret_sauce'); //Enter password
-
-
-//     cy.get('[data-test="login-button"]')
-//       .should('be.visible')
-//       .click(); //Click login button
-// });
-//      // Wait for the product container to be visible (indicating login success)
-
-//    
