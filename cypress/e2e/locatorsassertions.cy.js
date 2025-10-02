@@ -46,5 +46,12 @@ describe('Sauce Demo Assertions and Locators', () => {
     // assert that we are redirected to the inventory page
     cy.url().should('include', '/inventory.html');
 
+    // Demonstrate .then() to work with values
+    cy.get('.inventory_item').then((items) => {
+      const count = items.length;
+      cy.log(`Found ${count} items in inventory`);
+      expect(count).to.be.greaterThan(2);//there are 6 items in inventory
+    });
+
   });
 });
