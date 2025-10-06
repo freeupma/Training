@@ -28,7 +28,7 @@ describe('Demo Automation Windows Page — force popup in same tab', () => {
     // Remove target=_blank from the Click button...Inspect this button
     cy.get('a > .btn')
      .invoke('removeAttr', 'target')
-    .click();
+     .click();
 
 
     
