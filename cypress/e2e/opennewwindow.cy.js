@@ -23,7 +23,7 @@ describe('Demo Automation Windows Page — force popup in same tab', () => {
 // Demo Automation Windows Page
  it('handles opening a new window by removing target', () => {
     
-    cy.visit('https://demo.automationtesting.in/Windows.html?utm_source=chatgpt.com'); // Replace with your app login page
+    cy.visit('https://demo.automationtesting.in/Windows.html?utm_source=chatgpt.com'); // url
 
     // Remove target=_blank from the Click button...Inspect this button
     cy.get('a > .btn')
