@@ -14,4 +14,23 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+//import './commands'
+
+// Automatically take a screenshot after every command
+Cypress.on('command:end', (command) => {
+  // Only capture after visible user actions (skip internal stuff)
+  const actionsToCapture = [
+    'visit',
+    'click',
+    'type',
+    'select',
+    'check',
+    'uncheck',
+    'contains'
+  ];
+
+  if (actionsToCapture.includes(command.attributes.name)) {
+    const name = `${Cypress.currentTest.titlePath.join(' - ')} - ${command.attributes.name}`;
+    cy.screenshot(name, { capture: 'runner' });
+  }
+});
