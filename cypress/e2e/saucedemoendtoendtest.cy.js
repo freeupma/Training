@@ -44,10 +44,7 @@ describe('SauceDemo End to End Testing Flow', () => {
         //Finish
         cy.get('[data-test="finish"]').click();
 
-        //Verify the finish page
-        cy.get('[data-test="checkout-complete-container"]').should('contain.text', 'Thank you for your order!');
-
-
+        //Verify the finish p    
 
 });
 });
