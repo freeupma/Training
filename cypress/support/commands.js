@@ -23,3 +23,30 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Visit home page
+Cypress.Commands.add('visitHome', () => {
+  cy.visit('https://automationexercise.com/');
+  cy.url().should('include', 'automationexercise.com');
+});
+
+// Search for a product
+Cypress.Commands.add('searchProduct', (productName) => {
+     cy.contains('Products').click();   // navigate first
+     cy.get('#search_product').should('be.visible');  // confirm search bar exists
+     cy.get('#search_product').type(productName);
+     cy.get('#submit_search').click();
+
+});
+
+// Add the first product from search results
+Cypress.Commands.add('addFirstProductToCart', () => {
+  cy.get('.productinfo.text-center').first().trigger('mouseover');
+  cy.contains('Add to cart').click();
+  cy.contains('View Cart').click();
+});
+
+// Verify a product exists in the cart
+Cypress.Commands.add('verifyProductInCart', (productName) => {
+  cy.get('.cart_description').should('contain.text', productName);
+});

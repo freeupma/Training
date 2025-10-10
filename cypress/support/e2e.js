@@ -34,3 +34,6 @@ Cypress.on('command:end', (command) => {
     cy.screenshot(name, { capture: 'runner' });
   }
 });
+
+
+import './commands';
