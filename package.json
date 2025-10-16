@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^23.2.1",
     "cypress": "^15.3.0"
   }
 }
