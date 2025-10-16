@@ -16,7 +16,7 @@ describe('Mock API Error Response', () => {
     // Trigger the request from inside the browser
     cy.window().then((win) => {
       return fetch('https://reqres.in/api/users?page=2').catch(() => {
-        // Catching to prevent unhandled promise rejection in browser
+        // Catching to prevent unhandled promise rejection in browser “If this request fails, don’t crash; I’ll handle it silently.”
       });
     });
 
