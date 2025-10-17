@@ -50,3 +50,29 @@ Cypress.Commands.add('addFirstProductToCart', () => {
 Cypress.Commands.add('verifyProductInCart', (productName) => {
   cy.get('.cart_description').should('contain.text', productName);
 });
+
+
+
+//CUSTOM COMMAND TO LOGIN IN VIA API;;INJECT TOKEN TO BROWSER
+Cypress.Commands.add('LoginAPI', () => {
+
+  cy.request('POST', 'https://rahulshettyacademy.com/api/ecom/auth/login', {
+    userEmail: "koki949698@gmail.com",
+    userPassword: "$Sneha@25"
+  }).then((response) => {
+
+    expect(response.status).to.eq(200)
+    Cypress.env('token', response.body.token); // Set environment token to the actual value
+
+  })
+})
+//version skips the login API entirely and directly injects the token into the browser’s localStorage, 
+// simulating a logged-in user.
+
+// Custom command to inject a JWT token directly into browser localStorage
+Cypress.Commands.add('setSessionToken', (token) => {
+  cy.window().then((win) => {
+    win.localStorage.setItem('token', token)
+  })
+})
+
