@@ -12,6 +12,11 @@ const { defineConfig } = require('cypress');
 module.exports = defineConfig({
   e2e: {
     screenshotOnRunFailure: true,
+    experimentalStudio: true, 
+    screenshotsFolder: 'cypress/screenshots',
+    setupNodeEvents(on, config) {
+      
+    },
   },
-  screenshotsFolder: 'cypress/screenshots',
 });
+
